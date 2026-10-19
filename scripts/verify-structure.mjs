@@ -141,7 +141,8 @@ let typescript;
 try {
   typescript = await import('typescript');
 } catch {
-  const globalRoot = execFileSync('npm', ['root', '-g'], { encoding: 'utf8' }).trim();
+  const npmCommand = process.platform === 'win32' ? 'npm.cmd' : 'npm';
+  const globalRoot = execFileSync(npmCommand, ['root', '-g'], { encoding: 'utf8' }).trim();
   typescript = await import(pathToFileURL(join(globalRoot, 'typescript/lib/typescript.js')).href);
 }
 const ts = typescript.default ?? typescript;
