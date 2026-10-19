@@ -1,0 +1,35 @@
+<div class="container page">
+  <app-lab-header labId="01" />
+
+  <section class="card demo" aria-labelledby="quantity-title">
+    <div>
+      <p class="muted">Starter</p>
+      <h2 id="quantity-title">Selector de cantidad</h2>
+      <p>Completa las reglas del componente y verifica el resultado desde la interfaz.</p>
+    </div>
+
+    <div class="quantity-control" aria-label="Cantidad de unidades">
+      <button
+        class="button button--secondary"
+        type="button"
+        aria-label="Reducir cantidad"
+        [disabled]="!canDecrease()"
+        (click)="decrease()"
+      >
+        −
+      </button>
+      <output data-testid="quantity" aria-live="polite">{{ quantity() }}</output>
+      <button class="button" type="button" aria-label="Aumentar cantidad" (click)="increase()">
+        +
+      </button>
+    </div>
+
+    <button class="button button--secondary" type="button" (click)="reset()">
+      Restablecer
+    </button>
+  </section>
+
+  <aside class="todo-box">
+    <strong>Tu trabajo:</strong> corrige el límite inferior e implementa el restablecimiento.
+  </aside>
+</div>

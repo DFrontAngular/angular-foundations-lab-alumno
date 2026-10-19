@@ -1,0 +1,32 @@
+<div class="container page">
+  <app-lab-header labId="08" />
+
+  <section class="card stack">
+    <form class="filters" (submit)="$event.preventDefault(); applyFilters()">
+      <div class="field">
+        <label for="query-search">Buscar</label>
+        <input id="query-search" type="search" [value]="search()" (input)="onSearch($event)" />
+      </div>
+      <div class="field">
+        <label for="query-category">Categoría</label>
+        <select id="query-category" [value]="category()" (change)="onCategory($event)">
+          <option value="">Todas</option>
+          @for (item of categories; track item.id) {
+            <option [value]="item.id">{{ item.name }}</option>
+          }
+        </select>
+      </div>
+      <button class="button" type="submit">Aplicar filtros</button>
+    </form>
+
+    <p class="notice">URL actual: <code data-testid="current-query">{{ search() }} | {{ category() }}</code></p>
+
+    <ul>
+      @for (product of visibleProducts(); track product.id) {
+        <li data-testid="query-product">{{ product.name }}</li>
+      } @empty {
+        <li>No hay resultados.</li>
+      }
+    </ul>
+  </section>
+</div>

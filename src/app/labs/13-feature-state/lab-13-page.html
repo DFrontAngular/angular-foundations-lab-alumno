@@ -1,0 +1,30 @@
+<div class="container page">
+  <app-lab-header labId="13" />
+
+  <section class="card stack">
+    <div class="toolbar">
+      <div class="field">
+        <label for="store-query">Buscar</label>
+        <input id="store-query" [value]="store.query()" (input)="onQuery($event)" />
+      </div>
+      <output data-testid="store-favorite-count">{{ store.favoriteCount() }} favoritos</output>
+    </div>
+
+    <div class="products">
+      @for (product of store.visibleProducts(); track product.id) {
+        <article data-testid="store-product">
+          <h2>{{ product.name }}</h2>
+          <button
+            class="button button--secondary"
+            type="button"
+            [attr.aria-pressed]="store.isFavorite(product.id)"
+            [attr.aria-label]="'Cambiar favorito ' + product.name"
+            (click)="store.toggleFavorite(product.id)"
+          >
+            {{ store.isFavorite(product.id) ? '★ Favorito' : '☆ Favorito' }}
+          </button>
+        </article>
+      }
+    </div>
+  </section>
+</div>

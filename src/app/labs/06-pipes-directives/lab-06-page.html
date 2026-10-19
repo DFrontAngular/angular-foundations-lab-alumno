@@ -1,0 +1,23 @@
+<div class="container page">
+  <app-lab-header labId="06" />
+
+  <section class="card stack">
+    <div class="field">
+      <label for="highlight-search">Texto a resaltar</label>
+      <input id="highlight-search" [value]="search()" (input)="onSearch($event)" />
+    </div>
+
+    <ul>
+      @for (product of products; track product.id) {
+        <li
+          data-testid="product-row"
+          [appHighlightMatch]="search()"
+          [appHighlightText]="product.name"
+        >
+          <span>{{ product.name }}</span>
+          <strong [attr.data-testid]="'stock-' + product.id">{{ product.stock | stockLabel }}</strong>
+        </li>
+      }
+    </ul>
+  </section>
+</div>

@@ -1,0 +1,30 @@
+<a class="skip-link" href="#main-content">Saltar al contenido</a>
+<header class="site-header">
+  <div class="site-header__inner container">
+    <a class="brand" routerLink="/" aria-label="Angular Foundations Lab, inicio">
+      <span class="brand__mark" aria-hidden="true">A</span>
+      <span>
+        <strong>Angular Foundations</strong>
+        <small>laboratorio progresivo</small>
+      </span>
+    </a>
+
+    <nav aria-label="Navegación principal">
+      <a routerLink="/" routerLinkActive="is-active" [routerLinkActiveOptions]="{ exact: true }">
+        Itinerario
+      </a>
+      <a routerLink="/diagnostic" routerLinkActive="is-active">Diagnóstico</a>
+      <a routerLink="/capstone" routerLinkActive="is-active">Capstone</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main-content" tabindex="-1">
+  <router-outlet />
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    Angular 22 · standalone · OnPush · signals · zoneless · Vitest
+  </div>
+</footer>

@@ -1,0 +1,15 @@
+<article>
+  <div>
+    <h2>{{ product().name }}</h2>
+    <p>{{ product().description }}</p>
+  </div>
+  <button
+    class="button button--secondary"
+    type="button"
+    [attr.aria-label]="(favorite() ? 'Quitar de favoritos ' : 'Añadir a favoritos ') + product().name"
+    [attr.aria-pressed]="favorite()"
+    (click)="requestFavoriteChange()"
+  >
+    {{ favorite() ? '★ Favorito' : '☆ Favorito' }}
+  </button>
+</article>

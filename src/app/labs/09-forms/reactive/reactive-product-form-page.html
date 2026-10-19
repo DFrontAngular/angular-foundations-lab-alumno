@@ -1,0 +1,142 @@
+<section class="form-layout">
+  <form class="card product-form" novalidate (submit)="$event.preventDefault(); submit()">
+    <div>
+      <span class="variant-badge">Reactive Forms</span>
+      <h2>Alta de producto</h2>
+      <p class="muted">Completa el validator de grupo y la dependencia categoría/subcategoría.</p>
+    </div>
+
+    <div class="form-grid" [formGroup]="form">
+      <div class="field field--wide">
+        <label for="reactive-name">Nombre</label>
+        <input
+          id="reactive-name"
+          formControlName="name"
+          autocomplete="off"
+          [attr.aria-invalid]="form.controls.name.invalid && form.controls.name.touched"
+          aria-describedby="reactive-name-error"
+        />
+        @if (form.controls.name.touched && form.controls.name.invalid) {
+          <p id="reactive-name-error" class="field-error">Introduce un nombre de 3 a 80 caracteres.</p>
+        }
+      </div>
+
+      <div class="field">
+        <label for="reactive-category">Categoría</label>
+        <select
+          id="reactive-category"
+          formControlName="categoryId"
+          (change)="onCategoryChanged($event)"
+          [attr.aria-invalid]="form.controls.categoryId.invalid && form.controls.categoryId.touched"
+        >
+          <option value="">Selecciona una categoría</option>
+          @for (category of categories; track category.id) {
+            <option [value]="category.id">{{ category.name }}</option>
+          }
+        </select>
+        @if (form.controls.categoryId.touched && form.controls.categoryId.invalid) {
+          <p class="field-error">La categoría es obligatoria.</p>
+        }
+      </div>
+
+      <div class="field">
+        <label for="reactive-subcategory">Subcategoría</label>
+        <select
+          id="reactive-subcategory"
+          formControlName="subcategoryId"
+          [attr.aria-invalid]="
+            (form.controls.subcategoryId.invalid && form.controls.subcategoryId.touched) ||
+            hasRuleError('invalidSubcategory')
+          "
+        >
+          <option value="">Selecciona una subcategoría</option>
+          @for (subcategory of subcategories(); track subcategory.id) {
+            <option [value]="subcategory.id">{{ subcategory.name }}</option>
+          }
+        </select>
+        @if (form.controls.subcategoryId.touched && form.controls.subcategoryId.hasError('required')) {
+          <p class="field-error">La subcategoría es obligatoria.</p>
+        }
+        @if (hasRuleError('invalidSubcategory')) {
+          <p class="field-error">La subcategoría no pertenece a la categoría seleccionada.</p>
+        }
+      </div>
+
+      <fieldset class="field--wide">
+        <legend>Tipo de producto</legend>
+        <label>
+          <input type="radio" formControlName="kind" value="physical" />
+          Físico
+        </label>
+        <label>
+          <input type="radio" formControlName="kind" value="digital" />
+          Digital
+        </label>
+      </fieldset>
+
+      <div class="field">
+        <label for="reactive-base-price">Precio base</label>
+        <input
+          id="reactive-base-price"
+          type="number"
+          min="0"
+          step="0.01"
+          formControlName="basePrice"
+          [attr.aria-invalid]="form.controls.basePrice.invalid && form.controls.basePrice.touched"
+        />
+        @if (form.controls.basePrice.touched && form.controls.basePrice.invalid) {
+          <p class="field-error">El precio base debe ser mayor que cero.</p>
+        }
+      </div>
+
+      <div class="field">
+        <label for="reactive-sale-price">Precio promocional</label>
+        <input
+          id="reactive-sale-price"
+          type="number"
+          min="0"
+          step="0.01"
+          formControlName="salePrice"
+          [attr.aria-invalid]="hasRuleError('invalidSalePrice')"
+        />
+        @if (hasRuleError('invalidSalePrice')) {
+          <p class="field-error">El precio promocional debe ser inferior al precio base.</p>
+        }
+      </div>
+
+      <div class="field">
+        <label for="reactive-stock">Stock</label>
+        <input
+          id="reactive-stock"
+          type="number"
+          min="0"
+          step="1"
+          formControlName="stock"
+          [attr.aria-invalid]="hasRuleError('physicalStockRequired')"
+        />
+        @if (hasRuleError('physicalStockRequired')) {
+          <p class="field-error">Un producto físico necesita al menos una unidad.</p>
+        }
+      </div>
+
+      <div class="field field--wide">
+        <label for="reactive-description">Descripción</label>
+        <textarea id="reactive-description" formControlName="description"></textarea>
+        @if (form.controls.description.touched && form.controls.description.invalid) {
+          <p class="field-error">La descripción no puede superar 240 caracteres.</p>
+        }
+      </div>
+    </div>
+
+    <button class="button" type="submit">Guardar producto</button>
+  </form>
+
+  <aside class="card payload" aria-live="polite">
+    <h2>Payload válido</h2>
+    @if (submitted(); as value) {
+      <pre data-testid="submitted-payload">{{ value | json }}</pre>
+    } @else {
+      <p class="muted">Todavía no se ha generado ningún payload.</p>
+    }
+  </aside>
+</section>

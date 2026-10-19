@@ -1,0 +1,46 @@
+<div class="container page">
+  <app-lab-header labId="02" />
+
+  <section class="card stack" aria-labelledby="cart-title">
+    <div>
+      <p class="muted">Starter</p>
+      <h2 id="cart-title">Cesta</h2>
+    </div>
+
+    <ul class="cart-lines">
+      @for (line of lines(); track line.id) {
+        <li [attr.data-testid]="'line-' + line.id">
+          <div>
+            <strong>{{ line.name }}</strong>
+            <span>{{ line.unitPrice.toFixed(2) }} € por unidad</span>
+          </div>
+          <div class="cluster">
+            <button
+              class="button button--secondary"
+              type="button"
+              [attr.aria-label]="'Reducir ' + line.name"
+              (click)="changeQuantity(line.id, -1)"
+            >
+              −
+            </button>
+            <output [attr.data-testid]="'quantity-' + line.id">{{ line.quantity }}</output>
+            <button
+              class="button"
+              type="button"
+              [attr.aria-label]="'Aumentar ' + line.name"
+              (click)="changeQuantity(line.id, 1)"
+            >
+              +
+            </button>
+          </div>
+        </li>
+      }
+    </ul>
+
+    <dl class="totals">
+      <div><dt>Subtotal</dt><dd data-testid="subtotal">{{ subtotal().toFixed(2) }} €</dd></div>
+      <div><dt>IVA (21 %)</dt><dd data-testid="tax">{{ tax().toFixed(2) }} €</dd></div>
+      <div><dt>Total</dt><dd data-testid="total">{{ total().toFixed(2) }} €</dd></div>
+    </dl>
+  </section>
+</div>

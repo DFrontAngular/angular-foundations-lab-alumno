@@ -1,0 +1,24 @@
+<div class="container page">
+  <app-lab-header labId="12" />
+
+  <section class="card stack">
+    <div class="field">
+      <label for="suggestion-query">Buscar productos</label>
+      <input
+        id="suggestion-query"
+        type="search"
+        autocomplete="off"
+        [value]="query()"
+        (input)="onQuery($event)"
+      />
+    </div>
+
+    <ul aria-label="Sugerencias">
+      @for (suggestion of suggestions(); track suggestion) {
+        <li data-testid="suggestion">{{ suggestion }}</li>
+      } @empty {
+        <li class="muted">Escribe al menos dos caracteres.</li>
+      }
+    </ul>
+  </section>
+</div>

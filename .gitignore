@@ -1,0 +1,29 @@
+# Dependencies
+/node_modules
+
+# Angular build output
+/dist
+/.angular
+/coverage
+
+# Local environment
+.env
+.env.*
+!.env.example
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editors and OS
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.DS_Store
+Thumbs.db
+
+# Local uploads and temporary files
+/server/.data/
+/tmp/

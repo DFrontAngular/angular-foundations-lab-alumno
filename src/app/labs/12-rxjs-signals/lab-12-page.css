@@ -1,0 +1,12 @@
+ul {
+  display: grid;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+li {
+  padding: 0.7rem;
+  border-bottom: 1px solid var(--color-border);
+}

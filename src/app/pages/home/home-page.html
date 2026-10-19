@@ -1,0 +1,74 @@
+<section class="hero">
+  <div class="container hero__content">
+    <p class="eyebrow">De la plataforma web a una feature Angular defendible</p>
+    <h1>Aprende Angular sin empezar por un CRUD de producción.</h1>
+    <p class="hero__lead">
+      Dieciséis laboratorios acumulativos, dos implementaciones paralelas del mismo
+      formulario y un proyecto final. Cada reto introduce pocas variables y se valida
+      desde el comportamiento observable.
+    </p>
+    <div class="cluster">
+      <a class="button" routerLink="/labs/01-bindings">Empezar por el laboratorio 01</a>
+      <a class="button button--secondary" routerLink="/diagnostic">Hacer diagnóstico</a>
+    </div>
+  </div>
+</section>
+
+<div class="container page">
+  <section class="progress-card card" aria-labelledby="progress-title">
+    <div>
+      <p class="eyebrow">Progreso local</p>
+      <h2 id="progress-title">{{ completedCount() }} de 17 hitos completados</h2>
+      <p class="muted">Se guarda únicamente en este navegador mediante localStorage.</p>
+    </div>
+    <div class="progress-card__visual">
+      <strong>{{ percentage() }}%</strong>
+      <progress aria-label="Progreso del itinerario" [value]="percentage()" max="100">{{ percentage() }}%</progress>
+      <button class="button button--secondary" type="button" (click)="resetProgress()">
+        Reiniciar progreso
+      </button>
+    </div>
+  </section>
+
+  @for (block of blocks(); track block) {
+    <section class="learning-block" [attr.aria-labelledby]="'block-' + $index">
+      <div class="learning-block__heading">
+        <p class="eyebrow">Bloque {{ $index + 1 }}</p>
+        <h2 [id]="'block-' + $index">{{ block }}</h2>
+      </div>
+
+      <div class="lab-grid">
+        @for (lab of labs; track lab.id) {
+          @if (lab.block === block) {
+            <article class="lab-card" [class.lab-card--completed]="isCompleted(lab.id)">
+              <div class="lab-card__topline">
+                <span class="lab-card__number">{{ lab.id }}</span>
+                @if (isCompleted(lab.id)) {
+                  <span class="lab-card__status">Completado</span>
+                }
+              </div>
+              <h3>{{ lab.title }}</h3>
+              <p>{{ lab.summary }}</p>
+              <div class="lab-card__meta">
+                <span>{{ lab.duration }}</span>
+                <span>{{ lab.level }}</span>
+              </div>
+              <a [routerLink]="['/labs', lab.slug]">Abrir laboratorio <span aria-hidden="true">→</span></a>
+            </article>
+          }
+        }
+      </div>
+    </section>
+  }
+
+  @if (capstone; as project) {
+    <section class="capstone-card">
+      <div>
+        <p class="eyebrow">Proyecto final</p>
+        <h2>{{ project.title }}</h2>
+        <p>{{ project.summary }}</p>
+      </div>
+      <a class="button" routerLink="/capstone">Ver alcance del capstone</a>
+    </section>
+  }
+</div>

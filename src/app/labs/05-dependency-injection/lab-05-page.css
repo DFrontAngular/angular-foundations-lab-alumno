@@ -1,0 +1,30 @@
+.preference-demo {
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) minmax(220px, 1fr);
+  gap: 2rem;
+  align-items: end;
+}
+
+article {
+  display: grid;
+  gap: 0.35rem;
+  padding: 1.25rem;
+  border-radius: var(--radius-md);
+  color: #fff;
+  background: #15161a;
+}
+
+article strong {
+  font-size: 2rem;
+}
+
+article span {
+  color: #f3b61f;
+  font-weight: 800;
+}
+
+@media (max-width: 600px) {
+  .preference-demo {
+    grid-template-columns: 1fr;
+  }
+}

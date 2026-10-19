@@ -1,0 +1,43 @@
+<div class="container page">
+  <app-lab-header labId="11" />
+
+  <section class="card stack">
+    <form class="create-form" (submit)="$event.preventDefault(); create()">
+      <div class="field">
+        <label for="mutation-name">Nombre del nuevo producto</label>
+        <input id="mutation-name" [value]="newProductName()" (input)="onName($event)" />
+      </div>
+      <button class="button" type="submit" [disabled]="busy() || !newProductName().trim()">
+        {{ busy() ? 'Procesando…' : 'Crear' }}
+      </button>
+    </form>
+
+    @if (feedback()) {
+      <p class="notice notice--success" role="status">{{ feedback() }}</p>
+    }
+    @if (error()) {
+      <p class="notice notice--danger" role="alert">{{ error() }}</p>
+    }
+
+    @if (products.isLoading()) {
+      <p role="status">Cargando…</p>
+    } @else if (products.hasValue()) {
+      <ul>
+        @for (product of products.value().items; track product.id) {
+          <li data-testid="mutable-product">
+            <span>{{ product.name }}</span>
+            <button
+              class="button button--danger"
+              type="button"
+              [disabled]="busy()"
+              [attr.aria-label]="'Eliminar ' + product.name"
+              (click)="remove(product.id)"
+            >
+              Eliminar
+            </button>
+          </li>
+        }
+      </ul>
+    }
+  </section>
+</div>

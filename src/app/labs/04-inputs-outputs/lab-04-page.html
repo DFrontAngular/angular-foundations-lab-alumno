@@ -1,0 +1,25 @@
+<div class="container page">
+  <app-lab-header labId="04" />
+
+  <section class="card stack">
+    <div class="cluster heading-row">
+      <div>
+        <p class="muted">Starter</p>
+        <h2>Catálogo compuesto</h2>
+      </div>
+      <output data-testid="favorite-count" aria-live="polite">
+        {{ favoriteCount() }} favoritos
+      </output>
+    </div>
+
+    <div class="products">
+      @for (product of products; track product.id) {
+        <app-product-card
+          [product]="product"
+          [favorite]="isFavorite(product.id)"
+          (favoriteChange)="toggleFavorite($event)"
+        />
+      }
+    </div>
+  </section>
+</div>

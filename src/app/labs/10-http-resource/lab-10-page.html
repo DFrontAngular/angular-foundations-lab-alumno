@@ -1,0 +1,26 @@
+<div class="container page">
+  <app-lab-header labId="10" />
+
+  <section class="card stack">
+    <div class="filters">
+      <div class="field">
+        <label for="remote-search">Buscar</label>
+        <input id="remote-search" type="search" [value]="search()" (input)="onSearch($event)" />
+      </div>
+      <div class="field">
+        <label for="remote-category">Categoría</label>
+        <select id="remote-category" [value]="category()" (change)="onCategory($event)">
+          <option value="">Todas</option>
+          @for (item of categories; track item.id) {
+            <option [value]="item.id">{{ item.name }}</option>
+          }
+        </select>
+      </div>
+    </div>
+
+    <div class="todo-box">
+      <strong>TODO:</strong> sustituye este bloque por los cuatro estados de interfaz del recurso.
+      El recurso ya está conectado para que el ejercicio se centre en leerlo con seguridad.
+    </div>
+  </section>
+</div>

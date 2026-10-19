@@ -1,0 +1,20 @@
+<div class="container page">
+  <app-lab-header labId="05" />
+
+  <section class="card preference-demo">
+    <div class="field">
+      <label for="currency">Moneda preferida</label>
+      <select id="currency" [value]="preferences.currency()" (change)="onCurrencyChange($event)">
+        @for (currency of currencies; track currency) {
+          <option [value]="currency">{{ currency }}</option>
+        }
+      </select>
+    </div>
+
+    <article>
+      <p class="muted">Teclado mecánico TKL</p>
+      <strong data-testid="formatted-price">{{ formattedPrice() }}</strong>
+      <span data-testid="currency-code">{{ preferences.currency() }}</span>
+    </article>
+  </section>
+</div>

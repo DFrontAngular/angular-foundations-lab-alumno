@@ -1,0 +1,22 @@
+.demo {
+  display: grid;
+  max-width: 620px;
+  gap: 1.5rem;
+}
+
+.quantity-control {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+output {
+  display: grid;
+  min-width: 4rem;
+  min-height: 4rem;
+  place-items: center;
+  border-radius: 0.8rem;
+  font-size: 2rem;
+  font-weight: 900;
+  background: #f1eee7;
+}

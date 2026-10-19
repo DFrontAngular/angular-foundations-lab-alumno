@@ -1,0 +1,51 @@
+<div class="container page">
+  <app-lab-header labId="03" />
+
+  <section class="card stack">
+    <div class="filters">
+      <div class="field">
+        <label for="catalog-search">Buscar</label>
+        <input
+          id="catalog-search"
+          type="search"
+          placeholder="Nombre o descripción"
+          [value]="search()"
+          (input)="onSearch($event)"
+        />
+      </div>
+      <div class="field">
+        <label for="status-filter">Estado</label>
+        <select id="status-filter" [value]="status()" (change)="onStatusChange($event)">
+          <option value="all">Todos</option>
+          <option value="active">Activo</option>
+          <option value="out-of-stock">Sin stock</option>
+          <option value="archived">Archivado</option>
+        </select>
+      </div>
+    </div>
+
+    <p aria-live="polite">{{ visibleProducts().length }} resultados</p>
+
+    <ul class="product-grid">
+      @for (product of visibleProducts(); track product.id) {
+        <li data-testid="product-card">
+          <div class="cluster">
+            <h2>{{ product.name }}</h2>
+            <span class="status">
+              @switch (product.status) {
+                @case ('active') { Activo }
+                @case ('out-of-stock') { Sin stock }
+                @case ('archived') { Archivado }
+              }
+            </span>
+          </div>
+          <p>{{ product.description }}</p>
+        </li>
+      } @empty {
+        <li class="empty" data-testid="empty-state">
+          No hay productos que coincidan con los filtros.
+        </li>
+      }
+    </ul>
+  </section>
+</div>

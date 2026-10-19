@@ -1,0 +1,28 @@
+<header class="lab-header">
+  <a class="lab-header__back" routerLink="/">← Volver al itinerario</a>
+  <div class="lab-header__meta">
+    <span>Laboratorio {{ lab().id }}</span>
+    <span>{{ lab().duration }}</span>
+    <span>{{ lab().level }}</span>
+  </div>
+  <div class="lab-header__title-row">
+    <div>
+      <p class="lab-header__block">{{ lab().block }}</p>
+      <h1>{{ lab().title }}</h1>
+      <p>{{ lab().summary }}</p>
+    </div>
+    <button
+      class="button"
+      type="button"
+      [attr.aria-pressed]="completed()"
+      (click)="toggleCompleted()"
+    >
+      {{ completed() ? 'Completado ✓' : 'Marcar completado' }}
+    </button>
+  </div>
+  <ul aria-label="Conceptos principales">
+    @for (concept of lab().concepts; track concept) {
+      <li>{{ concept }}</li>
+    }
+  </ul>
+</header>

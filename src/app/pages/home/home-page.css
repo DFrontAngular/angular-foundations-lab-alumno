@@ -1,0 +1,161 @@
+.hero {
+  padding-block: clamp(3.5rem, 10vw, 7rem);
+  color: #fff;
+  background:
+    linear-gradient(115deg, rgb(243 182 31 / 20%), transparent 40%),
+    #15161a;
+}
+
+.hero__content {
+  display: grid;
+  gap: 1.2rem;
+}
+
+.hero h1 {
+  max-width: 18ch;
+  margin-bottom: 0;
+  font-size: clamp(2.7rem, 8vw, 6.2rem);
+  letter-spacing: -0.055em;
+}
+
+.hero__lead {
+  max-width: 66ch;
+  color: #d3d3d7;
+  font-size: clamp(1.05rem, 2vw, 1.35rem);
+  line-height: 1.65;
+}
+
+.eyebrow {
+  margin-bottom: 0.4rem;
+  color: #ad6800;
+  font-size: 0.78rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.hero .eyebrow {
+  color: #f3b61f;
+}
+
+.progress-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.progress-card__visual {
+  display: grid;
+  min-width: min(100%, 320px);
+  gap: 0.65rem;
+}
+
+.progress-card__visual strong {
+  font-size: 2rem;
+}
+
+progress {
+  width: 100%;
+  height: 0.8rem;
+  accent-color: #be7600;
+}
+
+.learning-block {
+  display: grid;
+  gap: 1rem;
+}
+
+.learning-block__heading h2 {
+  margin-bottom: 0;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+}
+
+.lab-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr));
+  gap: 1rem;
+}
+
+.lab-card {
+  display: grid;
+  min-height: 280px;
+  align-content: start;
+  gap: 0.8rem;
+  padding: 1.25rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.lab-card--completed {
+  border-color: #4f9769;
+  background: #f3fbf6;
+}
+
+.lab-card__topline,
+.lab-card__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.lab-card__number {
+  font-size: 2rem;
+  font-weight: 900;
+  color: #9d6000;
+}
+
+.lab-card__status {
+  padding: 0.25rem 0.5rem;
+  border-radius: 999px;
+  color: #145d33;
+  background: #dcefe3;
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+.lab-card h3 {
+  margin-bottom: 0;
+  font-size: 1.35rem;
+}
+
+.lab-card p {
+  color: var(--color-muted);
+  line-height: 1.55;
+}
+
+.lab-card__meta {
+  margin-top: auto;
+  color: var(--color-muted);
+  font-size: 0.85rem;
+}
+
+.lab-card a {
+  font-weight: 800;
+}
+
+.capstone-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: clamp(1.5rem, 4vw, 3rem);
+  border-radius: var(--radius-lg);
+  color: #fff;
+  background: #15161a;
+}
+
+.capstone-card .eyebrow {
+  color: #f3b61f;
+}
+
+@media (max-width: 720px) {
+  .progress-card,
+  .capstone-card {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}
