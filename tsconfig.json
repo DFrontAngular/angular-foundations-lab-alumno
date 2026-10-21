@@ -2,15 +2,9 @@
   "compileOnSave": false,
   "compilerOptions": {
     "paths": {
-      "@app/*": [
-        "./src/app/*"
-      ],
-      "@core/*": [
-        "./src/app/core/*"
-      ],
-      "@shared/*": [
-        "./src/app/shared/*"
-      ]
+      "@app/*": ["./src/app/*"],
+      "@core/*": ["./src/app/core/*"],
+      "@shared/*": ["./src/app/shared/*"]
     },
     "outDir": "./dist/out-tsc",
     "strict": true,
@@ -26,15 +20,20 @@
     "module": "preserve",
     "moduleResolution": "bundler",
     "useDefineForClassFields": false,
-    "lib": [
-      "ES2022",
-      "dom"
-    ]
+    "lib": ["ES2022", "dom"]
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
     "strictTemplates": true
-  }
+  },
+  "references": [
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
+    }
+  ]
 }
