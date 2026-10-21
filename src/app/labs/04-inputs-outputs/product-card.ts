@@ -1,6 +1,4 @@
-import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
-
-import type { Product } from '@shared/domain/product.models';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'app-product-card',
@@ -9,11 +7,5 @@ import type { Product } from '@shared/domain/product.models';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductCard {
-  readonly product = input.required<Product>();
-  readonly favorite = input(false);
-  readonly favoriteChange = output<string>();
-
-  requestFavoriteChange(): void {
-    this.favoriteChange.emit(this.product().id);
-  }
+  // TODO: define los inputs product/favorite y el output favoriteChange.
 }

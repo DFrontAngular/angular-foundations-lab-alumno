@@ -23,5 +23,8 @@ import { DEMO_PRODUCTS } from '@shared/data/catalog.data';
 })
 export default class ProductDetailPage {
   readonly productId = input('');
-  readonly product = computed(() => DEMO_PRODUCTS.find((item) => item.id === this.productId()));
+  readonly product = computed(() => {
+    // TODO: encuentra el producto cuyo id coincide con el parámetro de ruta.
+    return undefined;
+  });
 }

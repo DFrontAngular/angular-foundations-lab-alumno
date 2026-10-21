@@ -15,18 +15,12 @@ export default class Lab08Page {
   readonly #router = inject(Router);
 
   readonly categories = CATEGORIES;
-  readonly search = signal(this.#route.snapshot.queryParamMap.get('search') ?? '');
-  readonly category = signal(this.#route.snapshot.queryParamMap.get('category') ?? '');
+  readonly search = signal('');
+  readonly category = signal('');
 
   readonly visibleProducts = computed(() => {
-    const search = this.search().trim().toLocaleLowerCase('es');
-    const category = this.category();
-
-    return DEMO_PRODUCTS.filter(
-      (product) =>
-        (!category || product.categoryId === category) &&
-        product.name.toLocaleLowerCase('es').includes(search),
-    );
+    // TODO: deriva los productos de search y category sin mutar los datos.
+    return DEMO_PRODUCTS;
   });
 
   onSearch(event: Event): void {

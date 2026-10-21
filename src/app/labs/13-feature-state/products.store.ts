@@ -10,13 +10,11 @@ export class ProductsStore {
   readonly query = this.#query.asReadonly();
   readonly favorites = this.#favoriteIds.asReadonly();
   readonly favoriteCount = computed(() => this.#favoriteIds().size);
-  readonly visibleProducts = computed(() => {
-    const query = this.#query().trim().toLocaleLowerCase('es');
-    return DEMO_PRODUCTS.filter((product) => product.name.toLocaleLowerCase('es').includes(query));
-  });
+  readonly visibleProducts = computed(() => DEMO_PRODUCTS);
 
   setQuery(query: string): void {
-    this.#query.set(query);
+    // TODO: actualiza el estado de búsqueda encapsulado.
+    void query;
   }
 
   isFavorite(productId: string): boolean {

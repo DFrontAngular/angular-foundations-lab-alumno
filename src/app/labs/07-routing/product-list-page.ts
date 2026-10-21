@@ -1,10 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
-
 import { DEMO_PRODUCTS } from '@shared/data/catalog.data';
 
 @Component({
-  imports: [RouterLink],
   template: `
     <section class="card stack">
       <div>
@@ -15,7 +12,7 @@ import { DEMO_PRODUCTS } from '@shared/data/catalog.data';
         @for (product of products; track product.id) {
           <li>
             <span>{{ product.name }}</span>
-            <a [routerLink]="[product.id]">Ver detalle</a>
+            <span>TODO: enlaza al detalle con RouterLink</span>
           </li>
         }
       </ul>

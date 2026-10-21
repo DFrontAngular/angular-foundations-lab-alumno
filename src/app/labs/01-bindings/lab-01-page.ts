@@ -12,10 +12,13 @@ const MIN_QUANTITY = 1;
 })
 export default class Lab01Page {
   readonly quantity = signal(MIN_QUANTITY);
-  readonly canDecrease = computed(() => this.quantity() > MIN_QUANTITY);
+  readonly canDecrease = computed(() => {
+    // TODO: deriva si la cantidad puede reducirse a partir del estado actual.
+    return false;
+  });
 
   increase(): void {
-    this.quantity.update((value) => value + 1);
+    // TODO: incrementa la cantidad sin tocar el DOM.
   }
 
   decrease(): void {

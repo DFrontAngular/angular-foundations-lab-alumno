@@ -1,8 +1,6 @@
-import { httpResource } from '@angular/common/http';
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 
 import { CATEGORIES } from '@shared/data/catalog.data';
-import type { ProductsResponse } from '@shared/domain/product.models';
 import { LabHeader } from '@shared/ui/lab-header/lab-header';
 
 @Component({
@@ -16,14 +14,7 @@ export default class Lab10Page {
   readonly search = signal('');
   readonly category = signal('');
 
-  readonly products = httpResource<ProductsResponse>(() => ({
-    url: '/api/products',
-    params: {
-      search: this.search().trim(),
-      category: this.category(),
-      limit: '12',
-    },
-  }));
+  // TODO: crea un httpResource que dependa de search y category.
 
   onSearch(event: Event): void {
     const target = event.target;

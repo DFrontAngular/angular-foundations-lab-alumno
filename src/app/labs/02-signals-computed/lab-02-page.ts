@@ -24,8 +24,8 @@ export default class Lab02Page {
   ]);
 
   readonly subtotal = computed(() => 0);
-  readonly tax = computed(() => this.subtotal() * TAX_RATE);
-  readonly total = computed(() => this.subtotal() + this.tax());
+  readonly tax = computed(() => 0);
+  readonly total = computed(() => 0);
 
   changeQuantity(id: string, delta: number): void {
     // TODO: genera un array nuevo y limita cada cantidad a un mínimo de cero.
