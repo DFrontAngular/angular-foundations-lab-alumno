@@ -4,6 +4,7 @@
     <span>Laboratorio {{ lab().id }}</span>
     <span>{{ lab().duration }}</span>
     <span>{{ lab().level }}</span>
+    <a [routerLink]="['/labs', lab().slug, 'guide']">Ver guía</a>
   </div>
   <div class="lab-header__title-row">
     <div>

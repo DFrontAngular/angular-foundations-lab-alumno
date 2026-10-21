@@ -1,0 +1,55 @@
+<main class="container page guide">
+  <a class="guide__back" routerLink="/">← Volver al itinerario</a>
+
+  <section class="guide__hero" aria-labelledby="guide-title">
+    <p class="eyebrow">Guía del laboratorio {{ lab().id }} · {{ lab().duration }}</p>
+    <h1 id="guide-title">{{ lab().title }}</h1>
+    <p>{{ lab().summary }}</p>
+    <div class="cluster">
+      <a class="button" [routerLink]="['/labs', lab().slug]">Abrir el ejercicio de Angular</a>
+      <a class="button button--secondary" routerLink="/diagnostic">¿Necesitas repasar el punto de partida?</a>
+    </div>
+  </section>
+
+  <section class="guide__grid" aria-label="Resumen del encargo">
+    <article class="card">
+      <p class="eyebrow">Qué vas a practicar</p>
+      <h2>Conceptos clave</h2>
+      <ul class="guide__concepts">
+        @for (concept of lab().concepts; track concept) {
+          <li>{{ concept }}</li>
+        }
+      </ul>
+    </article>
+
+    <article class="card">
+      <p class="eyebrow">Antes de editar</p>
+      <h2>Forma de trabajo</h2>
+      <ol>
+        <li>Lee los TODOs del starter y localiza el componente responsable.</li>
+        <li>Haz un cambio pequeño y comprueba el comportamiento en el navegador.</li>
+        <li>Valida el contrato del laboratorio antes de darlo por terminado.</li>
+      </ol>
+    </article>
+  </section>
+
+  <section class="card guide__checklist" aria-labelledby="checklist-title">
+    <p class="eyebrow">Criterios de entrega</p>
+    <h2 id="checklist-title">No cierres el laboratorio hasta poder confirmar lo siguiente</h2>
+    <ul>
+      <li>El comportamiento visible responde al objetivo del laboratorio.</li>
+      <li>La solución conserva los límites de Angular: estado, template y servicios en su responsabilidad correcta.</li>
+      <li>No se ha resuelto el reto manipulando el DOM de forma imperativa.</li>
+      <li>El código es comprensible y no introduce cambios ajenos al encargo.</li>
+    </ul>
+  </section>
+
+  <section class="guide__verify" aria-labelledby="verify-title">
+    <div>
+      <p class="eyebrow">Comprobación</p>
+      <h2 id="verify-title">Ejecuta la prueba del laboratorio</h2>
+      <p>Los starters pueden comenzar incompletos. La prueba de este laboratorio es la que confirma su contrato de aceptación.</p>
+    </div>
+    <pre><code>{{ verificationCommand() }}</code></pre>
+  </section>
+</main>

@@ -1,0 +1,89 @@
+.guide {
+  gap: 1.5rem;
+}
+
+.guide__back {
+  width: fit-content;
+  font-weight: 800;
+}
+
+.guide__hero {
+  display: grid;
+  gap: 1rem;
+  padding: clamp(1.5rem, 5vw, 4rem);
+  border-radius: var(--radius-lg);
+  color: #fff;
+  background: linear-gradient(120deg, rgb(243 182 31 / 18%), transparent 55%), #15161a;
+}
+
+.guide__hero .eyebrow {
+  color: #f3b61f;
+}
+
+.guide__hero h1,
+.guide__hero p {
+  max-width: 62ch;
+  margin-bottom: 0;
+}
+
+.guide__hero p:not(.eyebrow) {
+  color: #d3d3d7;
+  font-size: 1.12rem;
+  line-height: 1.65;
+}
+
+.guide__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.guide__grid h2,
+.guide__checklist h2,
+.guide__verify h2 {
+  margin-bottom: 0.8rem;
+}
+
+.guide__grid li,
+.guide__checklist li {
+  margin-block: 0.55rem;
+  line-height: 1.5;
+}
+
+.guide__concepts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  padding: 0;
+  list-style: none;
+}
+
+.guide__concepts li {
+  margin: 0;
+  padding: 0.35rem 0.55rem;
+  border-radius: 999px;
+  color: #754600;
+  background: #fff1c8;
+  font-weight: 750;
+}
+
+.guide__verify {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.8fr);
+  align-items: center;
+  gap: 1.5rem;
+  padding: clamp(1.25rem, 4vw, 2.5rem);
+  border-radius: var(--radius-lg);
+  background: #eaf6ef;
+}
+
+.guide__verify pre {
+  margin: 0;
+}
+
+@media (max-width: 720px) {
+  .guide__grid,
+  .guide__verify {
+    grid-template-columns: 1fr;
+  }
+}

@@ -212,3 +212,13 @@ export function getLab(id: LabId): LabDefinition {
 
   return lab;
 }
+
+export function getLabBySlug(slug: string): LabDefinition {
+  const lab = LABS.find((candidate) => candidate.slug === slug);
+
+  if (!lab) {
+    throw new Error(`No existe la definiciÃ³n del laboratorio ${slug}.`);
+  }
+
+  return lab;
+}

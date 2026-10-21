@@ -8,7 +8,7 @@
       desde el comportamiento observable.
     </p>
     <div class="cluster">
-      <a class="button" routerLink="/labs/01-bindings">Empezar por el laboratorio 01</a>
+      <a class="button" routerLink="/labs/01-bindings/guide">Empezar por el laboratorio 01</a>
       <a class="button button--secondary" routerLink="/diagnostic">Hacer diagnóstico</a>
     </div>
   </div>
@@ -53,7 +53,7 @@
                 <span>{{ lab.duration }}</span>
                 <span>{{ lab.level }}</span>
               </div>
-              <a [routerLink]="['/labs', lab.slug]">Abrir laboratorio <span aria-hidden="true">→</span></a>
+              <a [routerLink]="['/labs', lab.slug, 'guide']">Ver guía <span aria-hidden="true">→</span></a>
             </article>
           }
         }

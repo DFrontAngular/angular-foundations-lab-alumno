@@ -15,6 +15,11 @@ export const routes: Routes = [
     title: 'Diagnóstico · Angular Foundations Lab',
   },
   {
+    path: 'labs/:slug/guide',
+    loadComponent: () => import('./pages/lab-guide/lab-guide-page'),
+    title: 'Guía de laboratorio · Angular Foundations Lab',
+  },
+  {
     path: 'labs/01-bindings',
     loadComponent: () => import('./labs/01-bindings/lab-01-page'),
     title: '01 · Componentes y bindings',
